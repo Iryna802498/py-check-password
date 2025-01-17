@@ -9,12 +9,27 @@ from app.main import check_password
     ("qwerty", False),
     ("Str@ng", False),
     ("1234567", False),
-    ("12345678901234567", False),
     ("P@ssword1998", True),
-    ("NoDigits!", False),
-    ("N0Specials", False),
-    ("nocapital1@", False),
-    ("ValidPass1!", True),
 ])
 def test_check_password(password: str, result: bool) -> None:
     assert check_password(password) == result
+
+
+def test_should_check_min_length() -> None:
+    assert check_password("P@ss1") is False
+
+
+def test_should_check_max_length() -> None:
+    assert check_password("A1@superlongpassword") is False
+
+
+def test_should_check_special_symbols() -> None:
+    assert check_password("Password12") is False
+
+
+def test_should_check_upper_letter() -> None:
+    assert check_password("p@ssword12") is False
+
+
+def test_should_check_digits() -> None:
+    assert check_password("P@ssword") is False
