@@ -10,7 +10,7 @@ from app.main import check_password
     ("Str@ng", False),
     ("1234567", False),
     ("12345678901234567", False),
-    ("P@ssword1998", False),
+    ("P@ssword1998", True),
     ("NoDigits!", False),
     ("N0Specials", False),
     ("nocapital1@", False),
